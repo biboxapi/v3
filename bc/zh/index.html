@@ -308,7 +308,7 @@
             <a href="/v3/bc/zh/" id="btn_contract_coin">币本位永续合约</a>
           </span>
           <span class="nav_cell nav_tab">
-            <a href="https://biboxcom.github.io/zh-hans/" id="btn_v1">Use V1 Api?</a>
+            <a href="https://biboxcom.github.io/zh-hans/" id="btn_v1">使用v1版本API</a>
           </span>
         </div>
       </div>
@@ -326,6 +326,9 @@
           <li>
             <a href="#8febbbfcbc" class="toc-h1 toc-link" data-title="币本位合约">币本位合约</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#sdk" class="toc-h2 toc-link" data-title="SDK与代码示例">SDK与代码示例</a>
+                  </li>
                   <li>
                     <a href="#1" class="toc-h2 toc-link" data-title="1.签名接口请求方式">1.签名接口请求方式</a>
                   </li>
@@ -384,6 +387,12 @@
                     <a href="#19" class="toc-h2 toc-link" data-title="19.查询订单">19.查询订单</a>
                   </li>
                   <li>
+                    <a href="#19-1" class="toc-h2 toc-link" data-title="19.1.查询划转记录">19.1.查询划转记录</a>
+                  </li>
+                  <li>
+                    <a href="#19-2" class="toc-h2 toc-link" data-title="19.2.查询资产估值">19.2.查询资产估值</a>
+                  </li>
+                  <li>
                     <a href="#20" class="toc-h2 toc-link" data-title="20.查询资金费率">20.查询资金费率</a>
                   </li>
                   <li>
@@ -438,6 +447,11 @@
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#e08c1d4f9a" class="toc-h2 toc-link" data-title="错误码">错误码</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -447,8 +461,23 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='8febbbfcbc'>币本位合约</h1>
-<p>这是币本位合约api文档。</p>
+        <h1 id='8febbbfcbc'>币本位合约</h1><h2 id='sdk'>SDK与代码示例</h2>
+<p>Bibox为开发人员提供了多种语言版本的合约SDK。
+这些SDK基于Bibox合约API开发，并自动完成以下功能：</p>
+
+<ul>
+<li>数据签名</li>
+<li>数据合成，例如：自动根据增量数据合成完整的深度</li>
+</ul>
+
+<p>因此，使用SDK开发访问Bibox的程序比使用API更便捷，开发周期更短。</p>
+
+<p>如果需要下载或者阅读更多信息，请点击以下链接:</p>
+
+<ul>
+<li><a href="https://github.com/Biboxcom/futures_java">Java</a></li>
+<li><a href="https://github.com/Biboxcom/futures_nodejs">Node</a></li>
+</ul>
 <h2 id='1'>1.签名接口请求方式</h2>
 <blockquote>
 <p>完整例子</p>
@@ -3370,6 +3399,305 @@
 <td>忽略</td>
 </tr>
 </tbody></table>
+<h2 id='19-1'>19.1.查询划转记录</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">CryptoJS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">crypto-js</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">request</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3.1/cquery/base_coin/transferLog</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">apikey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">900625568558820892a8c833c33ebc8fd2701efe</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//your apikey</span>
+<span class="kd">let</span> <span class="nx">secret</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c708ac3e70d115ec29efbee197330627d7edf842</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//your apikey secret</span>
+
+<span class="kd">let</span> <span class="nx">param</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">coin_symbol</span><span class="p">:</span> <span class="dl">'</span><span class="s1">BTC</span><span class="dl">'</span><span class="p">,</span> 
+    <span class="na">from</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="na">to</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span><span class="p">,</span> 
+    <span class="na">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
+    <span class="na">size</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">param</span><span class="p">);</span> <span class="c1">//format param</span>
+<span class="kd">let</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="dl">''</span> <span class="o">+</span> <span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">sign</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">HmacMD5</span><span class="p">(</span><span class="nx">timestamp</span> <span class="o">+</span> <span class="nx">cmd</span><span class="p">,</span> <span class="nx">secret</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span><span class="c1">//sign cmds</span>
+
+<span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">({</span>
+        <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span><span class="c1">//请求路径</span>
+        <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span><span class="c1">//请求方式</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="c1">//设置请求头</span>
+            <span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">bibox-api-key</span><span class="dl">'</span><span class="p">:</span> <span class="nx">apikey</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">bibox-api-sign</span><span class="dl">'</span><span class="p">:</span> <span class="nx">sign</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">bibox-timestamp</span><span class="dl">'</span><span class="p">:</span> <span class="nx">timestamp</span>
+        <span class="p">},</span>
+        <span class="na">body</span><span class="p">:</span> <span class="nx">cmd</span><span class="c1">//post参数字符串</span>
+    <span class="p">},</span>
+
+    <span class="kd">function</span> <span class="nx">optionalCallback</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">httpResponse</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">upload failed:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
+
+    <span class="p">});</span>
+
+</code></pre></div>
+<ul>
+<li>1.请求路径</li>
+</ul>
+
+<p>POST https://api.bibox.com/v3.1/cquery/base_coin/transferLog</p>
+
+<ul>
+<li>2.请求参数</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin_symbol</td>
+<td>false</td>
+<td>string</td>
+<td>币种符号</td>
+<td></td>
+<td>BTC,ETH, ...</td>
+</tr>
+<tr>
+<td>page</td>
+<td>true</td>
+<td>integer</td>
+<td>第几页</td>
+<td></td>
+<td>1,2, ...</td>
+</tr>
+<tr>
+<td>size</td>
+<td>true</td>
+<td>integer</td>
+<td>条数</td>
+<td></td>
+<td>10,20, ...</td>
+</tr>
+<tr>
+<td>from</td>
+<td>false</td>
+<td>integer</td>
+<td>起始时间</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>to</td>
+<td>false</td>
+<td>integer</td>
+<td>结束时间</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"page"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"items"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"1125899906862835742"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"user_id"</span><span class="p">:</span><span class="mi">100006</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"coin_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"pair"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"change_amount"</span><span class="p">:</span><span class="s2">"0.0010000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"change_result"</span><span class="p">:</span><span class="s2">"2.0230606258"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bill_type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"comment"</span><span class="p">:</span><span class="s2">"划转"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="s2">"2020-11-26T03:59:09.000Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="s2">"2020-11-26T03:59:09.000Z"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<ul>
+<li>3.返回字段</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>state</td>
+<td>0代表成功，否则代表失败</td>
+</tr>
+<tr>
+<td>id</td>
+<td>账单id</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>用户id</td>
+</tr>
+<tr>
+<td>coin_symbol</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>pair</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>change_amount</td>
+<td>划转数量</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>时间</td>
+</tr>
+<tr>
+<td>其它字段</td>
+<td>忽略</td>
+</tr>
+</tbody></table>
+<h2 id='19-2'>19.2.查询资产估值</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">CryptoJS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">crypto-js</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">request</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3.1/cquery/base_coin/bassets</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">apikey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">900625568558820892a8c833c33ebc8fd2701efe</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//your apikey</span>
+<span class="kd">let</span> <span class="nx">secret</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c708ac3e70d115ec29efbee197330627d7edf842</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//your apikey secret</span>
+
+<span class="kd">let</span> <span class="nx">param</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">param</span><span class="p">);</span> <span class="c1">//format param</span>
+<span class="kd">let</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="dl">''</span> <span class="o">+</span> <span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">sign</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">HmacMD5</span><span class="p">(</span><span class="nx">timestamp</span> <span class="o">+</span> <span class="nx">cmd</span><span class="p">,</span> <span class="nx">secret</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span><span class="c1">//sign cmds</span>
+
+<span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">({</span>
+        <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span><span class="c1">//请求路径</span>
+        <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span><span class="c1">//请求方式</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="c1">//设置请求头</span>
+            <span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">bibox-api-key</span><span class="dl">'</span><span class="p">:</span> <span class="nx">apikey</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">bibox-api-sign</span><span class="dl">'</span><span class="p">:</span> <span class="nx">sign</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">bibox-timestamp</span><span class="dl">'</span><span class="p">:</span> <span class="nx">timestamp</span>
+        <span class="p">},</span>
+        <span class="na">body</span><span class="p">:</span> <span class="nx">cmd</span><span class="c1">//post参数字符串</span>
+    <span class="p">},</span>
+
+    <span class="kd">function</span> <span class="nx">optionalCallback</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">httpResponse</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">upload failed:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
+
+    <span class="p">});</span>
+
+</code></pre></div>
+<ul>
+<li>1.请求路径</li>
+</ul>
+
+<p>POST https://api.bibox.com/v3.1/cquery/base_coin/bassets</p>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"coinAssets"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"coin_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"balance"</span><span class="p">:</span><span class="s2">"2.0230867132"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"freeze"</span><span class="p">:</span><span class="s2">"0.0000685393"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"profit"</span><span class="p">:</span><span class="s2">"-0.0000004735"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"unprofit"</span><span class="p">:</span><span class="s2">"-0.0008529014"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"can_transfer"</span><span class="p">:</span><span class="s2">"2.0222338118"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"total_balance"</span><span class="p">:</span><span class="s2">"2.0223023511"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"total_balance_usd"</span><span class="p">:</span><span class="s2">"20223.0235110000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"total_balance_cny"</span><span class="p">:</span><span class="s2">"131550.6837466242"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"total_balance_btc"</span><span class="p">:</span><span class="s2">"2.0223023511"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"order_freeze"</span><span class="p">:</span><span class="s2">"0.0000035218"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"margin"</span><span class="p">:</span><span class="s2">"0.0000650175"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"total_balance_btc"</span><span class="p">:</span><span class="s2">"11897.1202764313"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_balance_cny"</span><span class="p">:</span><span class="s2">"773907178.6813000767"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_balance_usd"</span><span class="p">:</span><span class="s2">"118971202.7643127656"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<ul>
+<li>2.返回字段</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>state</td>
+<td>0代表成功，否则代表失败</td>
+</tr>
+<tr>
+<td>coin_symbol</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>可用余额</td>
+</tr>
+<tr>
+<td>order_freeze</td>
+<td>挂单冻结</td>
+</tr>
+<tr>
+<td>margin</td>
+<td>保证金冻结</td>
+</tr>
+<tr>
+<td>unprofit</td>
+<td>未实现盈亏</td>
+</tr>
+<tr>
+<td>total_balance</td>
+<td>账户权益</td>
+</tr>
+<tr>
+<td>其它字段</td>
+<td>忽略</td>
+</tr>
+</tbody></table>
 <h2 id='20'>20.查询资金费率</h2>
 <ul>
 <li>1.请求路径</li>
@@ -5724,328 +6052,183 @@
 <td>忽略</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
+<h1 id='errors'>Errors</h1><h2 id='e08c1d4f9a'>错误码</h2>
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Code</th>
+<th>描述</th>
+<th>Msg</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>3000</td>
-<td>请求参数错误</td>
+<td>2003</td>
+<td>Cookie 失效</td>
+<td>Cookie expired</td>
 </tr>
 <tr>
-<td>3001</td>
-<td>暂不支持该币种</td>
+<td>2033</td>
+<td>操作失败！订单已完成或已撤销</td>
+<td>Operation failed! Order completed or canceled</td>
+</tr>
+<tr>
+<td>2034</td>
+<td>操作失败！请检查参数是否正确</td>
+<td>Operation failed! Please check parameter</td>
+</tr>
+<tr>
+<td>2040</td>
+<td>操作失败！没有该订单</td>
+<td>Operation failed! No record</td>
+</tr>
+<tr>
+<td>2064</td>
+<td>订单撤销中，不能再次撤销</td>
+<td>Canceling. Unable to cancel again</td>
+</tr>
+<tr>
+<td>2065</td>
+<td>委托价格设置过高，请重新设置价格</td>
+<td>Precatory price is exorbitant, please reset</td>
+</tr>
+<tr>
+<td>2066</td>
+<td>委托价格设置过低，请重新设置价格</td>
+<td>Precatory price is low , please reset</td>
+</tr>
+<tr>
+<td>2067</td>
+<td>暂不支持市价单</td>
+<td>Limit Order Only</td>
+</tr>
+<tr>
+<td>2068</td>
+<td>下单数量不能低于0.0001</td>
+<td>Min Amount:0.0001</td>
+</tr>
+<tr>
+<td>2069</td>
+<td>市价单无法撤销</td>
+<td>Market order can not be canceled</td>
+</tr>
+<tr>
+<td>2078</td>
+<td>下单价格非法</td>
+<td>unvalid order price</td>
+</tr>
+<tr>
+<td>2085</td>
+<td>币种最小下单数量限制</td>
+<td>the trade amount is low</td>
+</tr>
+<tr>
+<td>2086</td>
+<td>账户资产异常,限制下单</td>
+<td>Abnormal account assets, trade is forbiden</td>
+</tr>
+<tr>
+<td>2091</td>
+<td>请求过于频繁，请稍后再试</td>
+<td>request is too frequency, please try again later</td>
+</tr>
+<tr>
+<td>2092</td>
+<td>币种最小下单金额限制</td>
+<td>Minimum amount not met</td>
+</tr>
+<tr>
+<td>3000</td>
+<td>请求参数错误</td>
+<td>Requested parameter incorrect</td>
 </tr>
 <tr>
 <td>3002</td>
 <td>参数不能为空</td>
-</tr>
-<tr>
-<td>3003</td>
-<td>请输入Google验证码</td>
-</tr>
-<tr>
-<td>3004</td>
-<td>请输入短信验证码</td>
-</tr>
-<tr>
-<td>3005</td>
-<td>找不到该币种的父链</td>
-</tr>
-<tr>
-<td>3006</td>
-<td>没有配置该币种的服务器地址</td>
-</tr>
-<tr>
-<td>3007</td>
-<td>该币种不是erc20</td>
-</tr>
-<tr>
-<td>3008</td>
-<td>该币种没有合约地址</td>
+<td>Parameter cannot be null</td>
 </tr>
 <tr>
 <td>3009</td>
 <td>推送订阅channel不合法</td>
+<td>Illegal subscription channel</td>
 </tr>
 <tr>
 <td>3010</td>
 <td>websocket连接异常</td>
+<td>websocket connection error</td>
 </tr>
 <tr>
 <td>3011</td>
 <td>接口不支持apikey请求方式</td>
+<td>Illegal subscribe event</td>
 </tr>
 <tr>
 <td>3012</td>
 <td>apikey无效</td>
-</tr>
-<tr>
-<td>3013</td>
-<td>该币种不是omni代币</td>
-</tr>
-<tr>
-<td>3014</td>
-<td>该币种没有propertyid</td>
-</tr>
-<tr>
-<td>3015</td>
-<td>程序内部错误</td>
+<td>Interface does not support apikey request method</td>
 </tr>
 <tr>
 <td>3016</td>
 <td>交易对错误</td>
+<td>Invalid apikey</td>
 </tr>
 <tr>
 <td>3017</td>
 <td>推送订阅event不合法</td>
-</tr>
-<tr>
-<td>3018</td>
-<td>查询可提现额度失败</td>
-</tr>
-<tr>
-<td>3019</td>
-<td>该币种未开启融资融币</td>
-</tr>
-<tr>
-<td>3020</td>
-<td>放款深度不足</td>
-</tr>
-<tr>
-<td>3021</td>
-<td>没有放款信息</td>
-</tr>
-<tr>
-<td>3022</td>
-<td>没有借款信息</td>
-</tr>
-<tr>
-<td>3023</td>
-<td>更新数据库失败</td>
+<td>Trading pair error</td>
 </tr>
 <tr>
 <td>3024</td>
 <td>apikey权限不足</td>
+<td>apikey authorization insufficient</td>
 </tr>
 <tr>
 <td>3025</td>
 <td>apikey签名验证失败</td>
+<td>apikey signature verification failed</td>
 </tr>
 <tr>
 <td>3026</td>
 <td>apikey ip受限制</td>
+<td>apikey ip is restricted</td>
 </tr>
 <tr>
 <td>3027</td>
 <td>账户没有apikey</td>
+<td>No apikey in your account</td>
 </tr>
 <tr>
 <td>3028</td>
 <td>账户apikey数量超过了限制数量</td>
+<td>Account apikey has exceeded the limit amount</td>
 </tr>
 <tr>
 <td>3029</td>
 <td>apikey允许ip数量超过了限制数量</td>
-</tr>
-<tr>
-<td>3030</td>
-<td>该Google验证码已经被使用过</td>
-</tr>
-<tr>
-<td>3031</td>
-<td>旧Google验证码已经被使用过</td>
-</tr>
-<tr>
-<td>3032</td>
-<td>没有可还的放贷单</td>
+<td>apikey ip has exceeded the limit amount</td>
 </tr>
 <tr>
 <td>3033</td>
-<td>查询类请求只能有一个cmd</td>
+<td>查询类请求限制一个cmd</td>
+<td>query allow only one cmd</td>
 </tr>
 <tr>
 <td>3034</td>
-<td>最多cmd数限制</td>
+<td>最大cmd个数限制</td>
+<td>maxinum cmds</td>
 </tr>
 <tr>
 <td>3035</td>
-<td>cmd个数限制</td>
+<td>cmd请求个数限制</td>
+<td>too many cmds</td>
 </tr>
 <tr>
-<td>3036</td>
-<td>提现数量不能少于最小提现数</td>
+<td>4000</td>
+<td>当前网络连接不稳定，请稍候重试</td>
+<td>the network is unstable now, please try again later</td>
 </tr>
 <tr>
-<td>3037</td>
-<td>账户资产异常</td>
-</tr>
-<tr>
-<td>3038</td>
-<td>qtum gethexaddress失败</td>
-</tr>
-<tr>
-<td>3039</td>
-<td>可锁仓量不足</td>
-</tr>
-<tr>
-<td>3040</td>
-<td>活动未开始</td>
-</tr>
-<tr>
-<td>3041</td>
-<td>暂不支持非压缩数据订阅</td>
-</tr>
-<tr>
-<td>3042</td>
-<td>最小数量限制</td>
-</tr>
-<tr>
-<td>3043</td>
-<td>不能包含特殊字符</td>
-</tr>
-<tr>
-<td>3044</td>
-<td>重复下单</td>
-</tr>
-<tr>
-<td>3045</td>
-<td>交易对订单数量限制</td>
-</tr>
-<tr>
-<td>3046</td>
-<td>交易对持仓数量限制</td>
-</tr>
-<tr>
-<td>3047</td>
-<td>invalid id, id must be string and length &gt; 10</td>
-</tr>
-<tr>
-<td>3048</td>
-<td>响应验签失败</td>
-</tr>
-<tr>
-<td>3049</td>
-<td>超出数量限制</td>
-</tr>
-<tr>
-<td>3050</td>
-<td>子账户名不能纯数字</td>
-</tr>
-<tr>
-<td>3051</td>
-<td>strategy order number reaches the limit of pair</td>
-</tr>
-<tr>
-<td>3052</td>
-<td>strategy order number reaches the limit of account</td>
-</tr>
-<tr>
-<td>3053</td>
-<td>子账户无法进行该操作</td>
-</tr>
-<tr>
-<td>3100</td>
-<td>不支持该币种</td>
-</tr>
-<tr>
-<td>3101</td>
-<td>不支持该交易对</td>
-</tr>
-<tr>
-<td>3102</td>
-<td>全仓不支持该操作</td>
-</tr>
-<tr>
-<td>3103</td>
-<td>没有持仓不支持该操作</td>
-</tr>
-<tr>
-<td>3104</td>
-<td>有持仓不支持该操作</td>
-</tr>
-<tr>
-<td>3105</td>
-<td>可减少保证金不足</td>
-</tr>
-<tr>
-<td>3106</td>
-<td>有挂单不支持该操作</td>
-</tr>
-<tr>
-<td>3107</td>
-<td>FOK撤单</td>
-</tr>
-<tr>
-<td>3108</td>
-<td>post only撤单</td>
-</tr>
-<tr>
-<td>3109</td>
-<td>爆仓触发撤单</td>
-</tr>
-<tr>
-<td>3110</td>
-<td>ADL触发撤单</td>
-</tr>
-<tr>
-<td>3111</td>
-<td>爆仓价变化导致平仓单撤单</td>
-</tr>
-<tr>
-<td>3112</td>
-<td>order side参数错误</td>
-</tr>
-<tr>
-<td>3113</td>
-<td>order type参数错误</td>
-</tr>
-<tr>
-<td>3114</td>
-<td>side参数错误</td>
-</tr>
-<tr>
-<td>3115</td>
-<td>margin保证金错误</td>
-</tr>
-<tr>
-<td>3116</td>
-<td>model参数错误</td>
-</tr>
-<tr>
-<td>3117</td>
-<td>leverage参数错误</td>
-</tr>
-<tr>
-<td>3118</td>
-<td>amount参数错误</td>
-</tr>
-<tr>
-<td>3119</td>
-<td>price参数错误</td>
-</tr>
-<tr>
-<td>3120</td>
-<td>client_oid重复</td>
-</tr>
-<tr>
-<td>3121</td>
-<td>self trade参数错误</td>
-</tr>
-<tr>
-<td>3122</td>
-<td>time in force参数错误</td>
-</tr>
-<tr>
-<td>3123</td>
-<td>visible quantity参数错误</td>
-</tr>
-<tr>
-<td>3124</td>
-<td>cancel after参数错误</td>
+<td>4003</td>
+<td>服务器繁忙，请稍后再试</td>
+<td>The server is busy, please try again later</td>
 </tr>
 </tbody></table>
 
@@ -6062,6 +6245,7 @@
         const btn_spot = document.getElementById('btn_spot');
         const btn_contract = document.getElementById('btn_contract');
         const btn_contract_coin = document.getElementById('btn_contract_coin')
+        const btn_v1 = document.getElementById('btn_v1')
 
         const url = GetUrlRelativePath();
 
@@ -6072,6 +6256,7 @@
           btn_spot.innerHTML = 'Spot';
           btn_contract_coin.innerHTML = 'ContractCoin';
           btn_contract.innerHTML = 'Contract USDT';
+          btn_v1.innerHTML = 'Use V1 API?';
 
           lang_btn.href = url.replace('en/', 'zh/');
           btn_spot.href = btn_spot.href.replace('zh/', 'en/');
@@ -6084,6 +6269,7 @@
           btn_spot.innerHTML = '现货';
           btn_contract_coin.innerHTML = '币本位永续合约';
           btn_contract.innerHTML = 'U本位永续合约';
+          btn_v1.innerHTML = '使用v1版本API';
 
           lang_btn.href = url.replace('zh/', 'en/');
           btn_spot.href = btn_spot.href.replace('en/', 'zh/');

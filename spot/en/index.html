@@ -308,7 +308,7 @@
             <a href="/v3/bc/zh/" id="btn_contract_coin">币本位永续合约</a>
           </span>
           <span class="nav_cell nav_tab">
-            <a href="https://biboxcom.github.io/zh-hans/" id="btn_v1">Use V1 Api?</a>
+            <a href="https://biboxcom.github.io/zh-hans/" id="btn_v1">使用v1版本API</a>
           </span>
         </div>
       </div>
@@ -327,10 +327,13 @@
             <a href="#spot-trading" class="toc-h1 toc-link" data-title="Spot trading">Spot trading</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#1-signature-interface-request-method" class="toc-h2 toc-link" data-title="1. Signature interface request method">1. Signature interface request method</a>
+                    <a href="#sdk-and-demo" class="toc-h2 toc-link" data-title="SDK and Demo">SDK and Demo</a>
                   </li>
                   <li>
-                    <a href="#2-network-test" class="toc-h2 toc-link" data-title="2. Network test">2. Network test</a>
+                    <a href="#signature-interface-request-method" class="toc-h2 toc-link" data-title="Signature interface request method">Signature interface request method</a>
+                  </li>
+                  <li>
+                    <a href="#network-test" class="toc-h2 toc-link" data-title="Network test">Network test</a>
                   </li>
               </ul>
           </li>
@@ -338,28 +341,28 @@
             <a href="#market" class="toc-h1 toc-link" data-title="Market">Market</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#3-query-trading-pairs" class="toc-h2 toc-link" data-title="3. Query trading pairs">3. Query trading pairs</a>
+                    <a href="#query-trading-pairs" class="toc-h2 toc-link" data-title="Query trading pairs">Query trading pairs</a>
                   </li>
                   <li>
-                    <a href="#4-query-kline" class="toc-h2 toc-link" data-title="4. Query kline">4. Query kline</a>
+                    <a href="#query-kline" class="toc-h2 toc-link" data-title="Query kline">Query kline</a>
                   </li>
                   <li>
-                    <a href="#5-query-market-of-all-pairs" class="toc-h2 toc-link" data-title="5. Query market of all pairs">5. Query market of all pairs</a>
+                    <a href="#query-market-of-all-pairs" class="toc-h2 toc-link" data-title="Query market of all pairs">Query market of all pairs</a>
                   </li>
                   <li>
-                    <a href="#6-query-the-market-of-one-pair" class="toc-h2 toc-link" data-title="6. Query the market of one pair">6. Query the market of one pair</a>
+                    <a href="#query-the-market-of-one-pair" class="toc-h2 toc-link" data-title="Query the market of one pair">Query the market of one pair</a>
                   </li>
                   <li>
-                    <a href="#7-query-depth" class="toc-h2 toc-link" data-title="7. Query depth">7. Query depth</a>
+                    <a href="#query-depth" class="toc-h2 toc-link" data-title="Query depth">Query depth</a>
                   </li>
                   <li>
-                    <a href="#8-query-market-records" class="toc-h2 toc-link" data-title="8. Query market records">8. Query market records</a>
+                    <a href="#query-market-records" class="toc-h2 toc-link" data-title="Query market records">Query market records</a>
                   </li>
                   <li>
-                    <a href="#9-query-tiker" class="toc-h2 toc-link" data-title="9. Query tiker">9. Query tiker</a>
+                    <a href="#query-tiker" class="toc-h2 toc-link" data-title="Query tiker">Query tiker</a>
                   </li>
                   <li>
-                    <a href="#10-order-restriction-information" class="toc-h2 toc-link" data-title="10. Order restriction information">10. Order restriction information</a>
+                    <a href="#order-restriction-information" class="toc-h2 toc-link" data-title="Order restriction information">Order restriction information</a>
                   </li>
               </ul>
           </li>
@@ -367,25 +370,28 @@
             <a href="#spot-asset-need-apikey" class="toc-h1 toc-link" data-title="Spot Asset(Need ApiKey)">Spot Asset(Need ApiKey)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#11-account-assets" class="toc-h2 toc-link" data-title="11. Account assets">11. Account assets</a>
+                    <a href="#wallet-assets" class="toc-h2 toc-link" data-title="Wallet assets">Wallet assets</a>
                   </li>
                   <li>
-                    <a href="#12-deposit" class="toc-h2 toc-link" data-title="12. Deposit">12. Deposit</a>
+                    <a href="#spot-assets" class="toc-h2 toc-link" data-title="Spot assets">Spot assets</a>
                   </li>
                   <li>
-                    <a href="#13-withdrawal" class="toc-h2 toc-link" data-title="13. Withdrawal">13. Withdrawal</a>
+                    <a href="#deposit" class="toc-h2 toc-link" data-title="Deposit">Deposit</a>
                   </li>
                   <li>
-                    <a href="#14-query-deposit-records" class="toc-h2 toc-link" data-title="14.Query deposit records">14.Query deposit records</a>
+                    <a href="#withdrawal" class="toc-h2 toc-link" data-title="Withdrawal">Withdrawal</a>
                   </li>
                   <li>
-                    <a href="#15-query-withdrawal-records" class="toc-h2 toc-link" data-title="15. Query withdrawal records">15. Query withdrawal records</a>
+                    <a href="#query-deposit-records" class="toc-h2 toc-link" data-title="Query deposit records">Query deposit records</a>
                   </li>
                   <li>
-                    <a href="#16-get-currency-configuration" class="toc-h2 toc-link" data-title="16.Get currency configuration">16.Get currency configuration</a>
+                    <a href="#query-withdrawal-records" class="toc-h2 toc-link" data-title="Query withdrawal records">Query withdrawal records</a>
                   </li>
                   <li>
-                    <a href="#17-query-a-certain-withdrawal-record" class="toc-h2 toc-link" data-title="17.Query a certain withdrawal record">17.Query a certain withdrawal record</a>
+                    <a href="#get-currency-configuration" class="toc-h2 toc-link" data-title="Get currency configuration">Get currency configuration</a>
+                  </li>
+                  <li>
+                    <a href="#query-a-certain-withdrawal-record" class="toc-h2 toc-link" data-title="Query a certain withdrawal record">Query a certain withdrawal record</a>
                   </li>
               </ul>
           </li>
@@ -393,28 +399,28 @@
             <a href="#spot-trade-need-apikey" class="toc-h1 toc-link" data-title="Spot Trade(Need ApiKey)">Spot Trade(Need ApiKey)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#18-place-an-order" class="toc-h2 toc-link" data-title="18.Place an order">18.Place an order</a>
+                    <a href="#place-an-order" class="toc-h2 toc-link" data-title="Place an order">Place an order</a>
                   </li>
                   <li>
-                    <a href="#19-cancel-an-order" class="toc-h2 toc-link" data-title="19. Cancel an order">19. Cancel an order</a>
+                    <a href="#cancel-an-order" class="toc-h2 toc-link" data-title="Cancel an order">Cancel an order</a>
                   </li>
                   <li>
-                    <a href="#20-get-open-orders" class="toc-h2 toc-link" data-title="20. Get open orders">20. Get open orders</a>
+                    <a href="#get-open-orders" class="toc-h2 toc-link" data-title="Get open orders">Get open orders</a>
                   </li>
                   <li>
-                    <a href="#21-get-historical-orders" class="toc-h2 toc-link" data-title="21. Get historical orders">21. Get historical orders</a>
+                    <a href="#get-historical-orders" class="toc-h2 toc-link" data-title="Get historical orders">Get historical orders</a>
                   </li>
                   <li>
-                    <a href="#22-get-deal-records-based-on-order-id" class="toc-h2 toc-link" data-title="22. Get deal records(based on order id)">22. Get deal records(based on order id)</a>
+                    <a href="#get-deal-records-based-on-order-id" class="toc-h2 toc-link" data-title="Get deal records(based on order id)">Get deal records(based on order id)</a>
                   </li>
                   <li>
-                    <a href="#23-get-an-order-detail" class="toc-h2 toc-link" data-title="23. Get an order detail">23. Get an order detail</a>
+                    <a href="#get-an-order-detail" class="toc-h2 toc-link" data-title="Get an order detail">Get an order detail</a>
                   </li>
                   <li>
-                    <a href="#24-get-deal-records" class="toc-h2 toc-link" data-title="24. Get deal records">24. Get deal records</a>
+                    <a href="#get-deal-records" class="toc-h2 toc-link" data-title="Get deal records">Get deal records</a>
                   </li>
                   <li>
-                    <a href="#25-get-the-latest-deal-records" class="toc-h2 toc-link" data-title="25. Get the latest deal records">25. Get the latest deal records</a>
+                    <a href="#get-the-latest-deal-records" class="toc-h2 toc-link" data-title="Get the latest deal records">Get the latest deal records</a>
                   </li>
               </ul>
           </li>
@@ -495,9 +501,6 @@
                     <a href="#subscribe-to-user-data-to-analyze-spot-assets" class="toc-h2 toc-link" data-title="Subscribe to user data to analyze spot assets">Subscribe to user data to analyze spot assets</a>
                   </li>
                   <li>
-                    <a href="#subscribe-to-user-data-to-analyze-credit-assets" class="toc-h2 toc-link" data-title="Subscribe to user data to analyze credit assets">Subscribe to user data to analyze credit assets</a>
-                  </li>
-                  <li>
                     <a href="#subscribe-to-user-data-to-analyze-orders" class="toc-h2 toc-link" data-title="Subscribe to user data to analyze orders">Subscribe to user data to analyze orders</a>
                   </li>
                   <li>
@@ -507,6 +510,11 @@
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#e08c1d4f9a" class="toc-h2 toc-link" data-title="错误码">错误码</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -516,7 +524,27 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='spot-trading'>Spot trading</h1><h2 id='1-signature-interface-request-method'>1. Signature interface request method</h2>
+        <h1 id='spot-trading'>Spot trading</h1><h2 id='sdk-and-demo'>SDK and Demo</h2>
+<p>Bibox provides contract SDKs for developers in multiple languages.</p>
+
+<p>These SDKs are developed based on the Bibox contract API and automatically complete the following functions:</p>
+
+<ul>
+<li>Data signature</li>
+<li>Data merge, for example: automatically merge depth</li>
+</ul>
+
+<p>It&#39;s more convenient to use SDK to develop programs to access Bibox than to use API.</p>
+
+<p>If you need to download or read more information, please click the following link:</p>
+
+<ul>
+<li><a href="https://github.com/Biboxcom/spots_java">Java spot</a></li>
+<li><a href="https://github.com/Biboxcom/spots_nodejs">Node spot</a></li>
+<li><a href="https://github.com/Biboxcom/credits_java">Java credit</a></li>
+<li><a href="https://github.com/Biboxcom/credits_nodejs">Node credit</a></li>
+</ul>
+<h2 id='signature-interface-request-method'>Signature interface request method</h2>
 <blockquote>
 <p>Example</p>
 </blockquote>
@@ -537,7 +565,7 @@
 <span class="kd">let</span> <span class="nx">secret</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c708ac3e70d115ec29efbee197330627d7edf842</span><span class="dl">"</span>
 <span class="kd">let</span> <span class="nx">sign</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">HmacMD5</span><span class="p">(</span><span class="nx">strToSign</span><span class="p">,</span> <span class="nx">secret</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span><span class="c1">//4. Signed result</span>
 
-<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3.1/transfer/assets</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3.1/transfer/mainAssets</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">({</span>
         <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span><span class="c1">//request path</span>
@@ -606,7 +634,7 @@
 <li><p>6.When requesting, set http body as the formatted request parameter strParam </p></li>
 <li><p>7.The return value contains the field state, 0 means success, and other error codes, means failure. Successful results will have a corresponding field result, and failed results will have a corresponding field msg.</p></li>
 </ul>
-<h2 id='2-network-test'>2. Network test</h2>
+<h2 id='network-test'>Network test</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -678,7 +706,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h1 id='market'>Market</h1><h2 id='3-query-trading-pairs'>3. Query trading pairs</h2>
+<h1 id='market'>Market</h1><h2 id='query-trading-pairs'>Query trading pairs</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -774,7 +802,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='4-query-kline'>4. Query kline</h2>
+<h2 id='query-kline'>Query kline</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -906,7 +934,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='5-query-market-of-all-pairs'>5. Query market of all pairs</h2>
+<h2 id='query-market-of-all-pairs'>Query market of all pairs</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1082,7 +1110,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='6-query-the-market-of-one-pair'>6. Query the market of one pair</h2>
+<h2 id='query-the-market-of-one-pair'>Query the market of one pair</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1242,7 +1270,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='7-query-depth'>7. Query depth</h2>
+<h2 id='query-depth'>Query depth</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1372,7 +1400,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='8-query-market-records'>8. Query market records</h2>
+<h2 id='query-market-records'>Query market records</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1490,7 +1518,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='9-query-tiker'>9. Query tiker</h2>
+<h2 id='query-tiker'>Query tiker</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1632,7 +1660,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='10-order-restriction-information'>10. Order restriction information</h2>
+<h2 id='order-restriction-information'>Order restriction information</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1743,14 +1771,14 @@
 <td>The minimum order amount in USDT trading area is limited to 1, and so on</td>
 </tr>
 </tbody></table>
-<h1 id='spot-asset-need-apikey'>Spot Asset(Need ApiKey)</h1><h2 id='11-account-assets'>11. Account assets</h2>
+<h1 id='spot-asset-need-apikey'>Spot Asset(Need ApiKey)</h1><h2 id='wallet-assets'>Wallet assets</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">CryptoJS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">crypto-js</span><span class="dl">"</span><span class="p">);</span>
 <span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">request</span><span class="dl">"</span><span class="p">);</span>
 
-<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3.1/transfer/assets</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3.1/transfer/mainAssets</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">let</span> <span class="nx">apikey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">900625568558820892a8c833c33ebc8fd2701efe</span><span class="dl">"</span><span class="p">;</span> 
 <span class="kd">let</span> <span class="nx">secret</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c708ac3e70d115ec29efbee197330627d7edf842</span><span class="dl">"</span><span class="p">;</span>
@@ -1789,7 +1817,7 @@
 <li>1. Request path</li>
 </ul>
 
-<p>POST https://api.bibox.com/v3.1/transfer/assets</p>
+<p>POST https://api.bibox.com/v3.1/transfer/mainAssets</p>
 
 <ul>
 <li>2. Request parameter</li>
@@ -1905,7 +1933,169 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='12-deposit'>12. Deposit</h2>
+<h2 id='spot-assets'>Spot assets</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">CryptoJS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">crypto-js</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">request</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3.1/spot/account/assets</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">apikey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">900625568558820892a8c833c33ebc8fd2701efe</span><span class="dl">"</span><span class="p">;</span> 
+<span class="kd">let</span> <span class="nx">secret</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c708ac3e70d115ec29efbee197330627d7edf842</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">param</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">select</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">param</span><span class="p">);</span> <span class="c1">//format param</span>
+<span class="kd">let</span> <span class="nx">timestamp</span> <span class="o">=</span><span class="dl">''</span> <span class="o">+</span> <span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">());</span>
+<span class="kd">let</span> <span class="nx">sign</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">HmacMD5</span><span class="p">(</span><span class="nx">timestamp</span> <span class="o">+</span> <span class="nx">cmd</span><span class="p">,</span> <span class="nx">secret</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span><span class="c1">//sign cmds</span>
+
+<span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">({</span>
+        <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span><span class="c1">//request path</span>
+        <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span><span class="c1">//Request method</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="c1">//Set request header</span>
+            <span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">bibox-api-key</span><span class="dl">'</span><span class="p">:</span> <span class="nx">apikey</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">bibox-api-sign</span><span class="dl">'</span><span class="p">:</span> <span class="nx">sign</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">bibox-timestamp</span><span class="dl">'</span><span class="p">:</span> <span class="nx">timestamp</span>
+        <span class="p">},</span>
+        <span class="na">body</span><span class="p">:</span> <span class="nx">cmd</span><span class="c1">//post parameter string</span>
+    <span class="p">},</span>
+
+    <span class="kd">function</span> <span class="nx">optionalCallback</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">httpResponse</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">upload failed:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
+
+    <span class="p">});</span>
+
+</code></pre></div>
+<ul>
+<li>1. Request path</li>
+</ul>
+
+<p>POST https://api.bibox.com/v3.1/spot/account/assets</p>
+
+<ul>
+<li>2. Request parameter</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Necessary or not</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+<th>Value range</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>select</td>
+<td>false</td>
+<td>integer</td>
+<td>Whether to query asset details</td>
+<td></td>
+<td>0-Total assets of each currency, 1-Request asset details of all currencies</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"result"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"total_btc"</span><span class="p">:</span><span class="s2">"0.01373280"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_cny"</span><span class="p">:</span><span class="s2">"1253.48"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_usd"</span><span class="p">:</span><span class="s2">"188.63"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"assets_list"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"coin_symbol"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"BTCValue"</span><span class="p">:</span><span class="s2">"0.00149188"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"CNYValue"</span><span class="p">:</span><span class="s2">"136.17"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"USDValue"</span><span class="p">:</span><span class="s2">"20.49"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"balance"</span><span class="p">:</span><span class="s2">"0.00149188"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"freeze"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"coin_symbol"</span><span class="p">:</span><span class="s2">"BIX"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"BTCValue"</span><span class="p">:</span><span class="s2">"0.00098407"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"CNYValue"</span><span class="p">:</span><span class="s2">"89.82"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"USDValue"</span><span class="p">:</span><span class="s2">"13.52"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"balance"</span><span class="p">:</span><span class="s2">"247.87570000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"freeze"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"cmd"</span><span class="p">:</span><span class="s2">"assets"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li>3. Response field description</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>state</td>
+<td>0 means success, otherwise means failure</td>
+</tr>
+<tr>
+<td>total_btc</td>
+<td>The sum of assets in each currency, btc-based</td>
+</tr>
+<tr>
+<td>total_cny</td>
+<td>The sum of assets in each currency, cny-based</td>
+</tr>
+<tr>
+<td>total_usd</td>
+<td>The sum of assets of each currency, usd-based</td>
+</tr>
+<tr>
+<td>assets_list</td>
+<td>Currency asset list</td>
+</tr>
+<tr>
+<td>coin_symbol</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>Available assets</td>
+</tr>
+<tr>
+<td>freeze</td>
+<td>freeze assets</td>
+</tr>
+<tr>
+<td>BTCValue</td>
+<td>btc valuation</td>
+</tr>
+<tr>
+<td>CNYValue</td>
+<td>cny valuation</td>
+</tr>
+<tr>
+<td>USDValue</td>
+<td>usd valuation</td>
+</tr>
+<tr>
+<td>Other fields</td>
+<td>Ignore</td>
+</tr>
+</tbody></table>
+<h2 id='deposit'>Deposit</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2009,7 +2199,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='13-withdrawal'>13. Withdrawal</h2>
+<h2 id='withdrawal'>Withdrawal</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2024,10 +2214,7 @@
 <span class="kd">let</span> <span class="nx">param</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">coin_symbol</span><span class="p">:</span><span class="dl">'</span><span class="s1">BTC</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">amount</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="na">totp_code</span><span class="p">:</span> <span class="mi">642163</span><span class="p">,</span>
-    <span class="na">trade_pwd</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123456</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">addr</span><span class="p">:</span> <span class="dl">'</span><span class="s1">13f2LpNAdsKuxdTt2bKFLaSZL7toeyieGExxx</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">addr_remark</span><span class="p">:</span><span class="dl">'</span><span class="s1">test.btc</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">memo</span><span class="p">:</span><span class="dl">''</span>
 <span class="p">};</span>
 
@@ -2094,36 +2281,12 @@
 <td>Must be greater than the minimum withdrawal quantity for each currency</td>
 </tr>
 <tr>
-<td>totp_code</td>
-<td>false</td>
-<td>integer</td>
-<td>google verification code</td>
-<td></td>
-<td>New address required, old address not required</td>
-</tr>
-<tr>
-<td>trade_pwd</td>
-<td>false</td>
-<td>string</td>
-<td>Fund password</td>
-<td></td>
-<td>New address required, old address not required</td>
-</tr>
-<tr>
 <td>addr</td>
 <td>true</td>
 <td>string</td>
 <td>Withdrawal address</td>
 <td></td>
 <td>Currency legal address</td>
-</tr>
-<tr>
-<td>addr_remark</td>
-<td>true</td>
-<td>string</td>
-<td>Withdrawal address remark name</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>memo</td>
@@ -2167,7 +2330,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='14-query-deposit-records'>14.Query deposit records</h2>
+<h2 id='query-deposit-records'>Query deposit records</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2315,7 +2478,7 @@
 </tr>
 <tr>
 <td>items</td>
-<td>deposit record list</td>
+<td>records</td>
 </tr>
 <tr>
 <td>coin_symbol</td>
@@ -2346,7 +2509,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='15-query-withdrawal-records'>15. Query withdrawal records</h2>
+<h2 id='query-withdrawal-records'>Query withdrawal records</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2360,7 +2523,7 @@
 
 <span class="kd">let</span> <span class="nx">param</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">coin_symbol</span><span class="p">:</span><span class="dl">'</span><span class="s1">USDT</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">filter_type</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="na">filter_type</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
     <span class="na">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="na">size</span><span class="p">:</span> <span class="mi">10</span>
 <span class="p">};</span>
@@ -2495,7 +2658,7 @@
 </tr>
 <tr>
 <td>items</td>
-<td>deposit record list</td>
+<td>records</td>
 </tr>
 <tr>
 <td>coin_symbol</td>
@@ -2523,14 +2686,14 @@
 </tr>
 <tr>
 <td>status</td>
-<td>deposit status, 1-withdrawal in progress, 2-withdrawal received, 3-withdrawal failed</td>
+<td>status, 1-withdrawal in progress, 2-withdrawal received, 3-withdrawal failed, 4-withdrawal cancelled</td>
 </tr>
 <tr>
 <td>Other fields</td>
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='16-get-currency-configuration'>16.Get currency configuration</h2>
+<h2 id='get-currency-configuration'>Get currency configuration</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2663,7 +2826,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='17-query-a-certain-withdrawal-record'>17.Query a certain withdrawal record</h2>
+<h2 id='query-a-certain-withdrawal-record'>Query a certain withdrawal record</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2784,7 +2947,7 @@
 </tr>
 <tr>
 <td>status</td>
-<td>Status, -2: Approval failed; -1: User canceled; 0: Pending approval; 1: Approved (to be issued coins); 2: In the process of issuing coins; 3: Issuing coins completed&#39;</td>
+<td>Status, -2: Approval failed; -1: User canceled; 0: Pending approval; 1: Approved (to be issued coins); 2: In the process of issuing coins; 3: Issuing coins completed</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -2799,7 +2962,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h1 id='spot-trade-need-apikey'>Spot Trade(Need ApiKey)</h1><h2 id='18-place-an-order'>18.Place an order</h2>
+<h1 id='spot-trade-need-apikey'>Spot Trade(Need ApiKey)</h1><h2 id='place-an-order'>Place an order</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2956,7 +3119,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='19-cancel-an-order'>19. Cancel an order</h2>
+<h2 id='cancel-an-order'>Cancel an order</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -3060,7 +3223,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='20-get-open-orders'>20. Get open orders</h2>
+<h2 id='get-open-orders'>Get open orders</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -3241,7 +3404,7 @@
 </tr>
 <tr>
 <td>items</td>
-<td>deposit record list</td>
+<td>records</td>
 </tr>
 <tr>
 <td>id</td>
@@ -3304,7 +3467,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='21-get-historical-orders'>21. Get historical orders</h2>
+<h2 id='get-historical-orders'>Get historical orders</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -3489,7 +3652,7 @@
 </tr>
 <tr>
 <td>items</td>
-<td>deposit record list</td>
+<td>records</td>
 </tr>
 <tr>
 <td>id</td>
@@ -3556,7 +3719,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='22-get-deal-records-based-on-order-id'>22. Get deal records(based on order id)</h2>
+<h2 id='get-deal-records-based-on-order-id'>Get deal records(based on order id)</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -3788,7 +3951,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='23-get-an-order-detail'>23. Get an order detail</h2>
+<h2 id='get-an-order-detail'>Get an order detail</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -3976,7 +4139,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='24-get-deal-records'>24. Get deal records</h2>
+<h2 id='get-deal-records'>Get deal records</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -4217,7 +4380,7 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='25-get-the-latest-deal-records'>25. Get the latest deal records</h2>
+<h2 id='get-the-latest-deal-records'>Get the latest deal records</h2>
 <p>Query the deal records after the specified id number, and return 1000 records per page</p>
 
 <blockquote>
@@ -7618,78 +7781,6 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h2 id='subscribe-to-user-data-to-analyze-credit-assets'>Subscribe to user data to analyze credit assets</h2>
-<ul>
-<li>1. Key fields</li>
-</ul>
-
-<p>assets</p>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"bibox_sub_spot_ALL_ALL_login"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"binary"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"data_type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-         </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
-             </span><span class="nl">"assets"</span><span class="p">:{</span><span class="w">
-                 </span><span class="nl">"credit"</span><span class="p">:{</span><span class="w">
-                     </span><span class="nl">"BIX_USDT"</span><span class="p">:{</span><span class="w">
-                         </span><span class="nl">"BIX"</span><span class="p">:{</span><span class="w">
-                             </span><span class="nl">"balance"</span><span class="p">:</span><span class="s2">"681.74441804"</span><span class="p">,</span><span class="w">
-                             </span><span class="nl">"freeze"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="w">
-                         </span><span class="p">},</span><span class="w">
-                         </span><span class="nl">"USDT"</span><span class="p">:{</span><span class="w">
-                             </span><span class="nl">"balance"</span><span class="p">:</span><span class="s2">"0.21698199"</span><span class="p">,</span><span class="w">
-                             </span><span class="nl">"freeze"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="w">
-                         </span><span class="p">}</span><span class="w">
-                     </span><span class="p">},</span><span class="w">
-                     </span><span class="nl">"BTC_USDT"</span><span class="p">:{</span><span class="w">
-                         </span><span class="nl">"BTC"</span><span class="p">:{</span><span class="w">
-                             </span><span class="nl">"balance"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w">
-                             </span><span class="nl">"freeze"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="w">
-                         </span><span class="p">},</span><span class="w">
-                         </span><span class="nl">"USDT"</span><span class="p">:{</span><span class="w">
-                             </span><span class="nl">"balance"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-                             </span><span class="nl">"freeze"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="w">
-                         </span><span class="p">}</span><span class="w">
-                     </span><span class="p">}</span><span class="w">
-                 </span><span class="p">}</span><span class="w">
-             </span><span class="p">}</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-
-</span></code></pre></div>
-<ul>
-<li>2. Response field description</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>credit</td>
-<td>Credit account assets</td>
-</tr>
-<tr>
-<td>balance</td>
-<td>Available assets</td>
-</tr>
-<tr>
-<td>freeze</td>
-<td>freeze assets</td>
-</tr>
-<tr>
-<td>Other fields</td>
-<td>Ignore</td>
-</tr>
-</tbody></table>
 <h2 id='subscribe-to-user-data-to-analyze-orders'>Subscribe to user data to analyze orders</h2>
 <ul>
 <li>1. Key fields</li>
@@ -7757,7 +7848,7 @@
 </tr>
 <tr>
 <td>items</td>
-<td>deposit record list</td>
+<td>records</td>
 </tr>
 <tr>
 <td>id</td>
@@ -7928,328 +8019,183 @@
 <td>Ignore</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
+<h1 id='errors'>Errors</h1><h2 id='e08c1d4f9a'>错误码</h2>
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Code</th>
+<th>描述</th>
+<th>Msg</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>3000</td>
-<td>请求参数错误</td>
+<td>2003</td>
+<td>Cookie 失效</td>
+<td>Cookie expired</td>
 </tr>
 <tr>
-<td>3001</td>
-<td>暂不支持该币种</td>
+<td>2033</td>
+<td>操作失败！订单已完成或已撤销</td>
+<td>Operation failed! Order completed or canceled</td>
+</tr>
+<tr>
+<td>2034</td>
+<td>操作失败！请检查参数是否正确</td>
+<td>Operation failed! Please check parameter</td>
+</tr>
+<tr>
+<td>2040</td>
+<td>操作失败！没有该订单</td>
+<td>Operation failed! No record</td>
+</tr>
+<tr>
+<td>2064</td>
+<td>订单撤销中，不能再次撤销</td>
+<td>Canceling. Unable to cancel again</td>
+</tr>
+<tr>
+<td>2065</td>
+<td>委托价格设置过高，请重新设置价格</td>
+<td>Precatory price is exorbitant, please reset</td>
+</tr>
+<tr>
+<td>2066</td>
+<td>委托价格设置过低，请重新设置价格</td>
+<td>Precatory price is low , please reset</td>
+</tr>
+<tr>
+<td>2067</td>
+<td>暂不支持市价单</td>
+<td>Limit Order Only</td>
+</tr>
+<tr>
+<td>2068</td>
+<td>下单数量不能低于0.0001</td>
+<td>Min Amount:0.0001</td>
+</tr>
+<tr>
+<td>2069</td>
+<td>市价单无法撤销</td>
+<td>Market order can not be canceled</td>
+</tr>
+<tr>
+<td>2078</td>
+<td>下单价格非法</td>
+<td>unvalid order price</td>
+</tr>
+<tr>
+<td>2085</td>
+<td>币种最小下单数量限制</td>
+<td>the trade amount is low</td>
+</tr>
+<tr>
+<td>2086</td>
+<td>账户资产异常,限制下单</td>
+<td>Abnormal account assets, trade is forbiden</td>
+</tr>
+<tr>
+<td>2091</td>
+<td>请求过于频繁，请稍后再试</td>
+<td>request is too frequency, please try again later</td>
+</tr>
+<tr>
+<td>2092</td>
+<td>币种最小下单金额限制</td>
+<td>Minimum amount not met</td>
+</tr>
+<tr>
+<td>3000</td>
+<td>请求参数错误</td>
+<td>Requested parameter incorrect</td>
 </tr>
 <tr>
 <td>3002</td>
 <td>参数不能为空</td>
-</tr>
-<tr>
-<td>3003</td>
-<td>请输入Google验证码</td>
-</tr>
-<tr>
-<td>3004</td>
-<td>请输入短信验证码</td>
-</tr>
-<tr>
-<td>3005</td>
-<td>找不到该币种的父链</td>
-</tr>
-<tr>
-<td>3006</td>
-<td>没有配置该币种的服务器地址</td>
-</tr>
-<tr>
-<td>3007</td>
-<td>该币种不是erc20</td>
-</tr>
-<tr>
-<td>3008</td>
-<td>该币种没有合约地址</td>
+<td>Parameter cannot be null</td>
 </tr>
 <tr>
 <td>3009</td>
 <td>推送订阅channel不合法</td>
+<td>Illegal subscription channel</td>
 </tr>
 <tr>
 <td>3010</td>
 <td>websocket连接异常</td>
+<td>websocket connection error</td>
 </tr>
 <tr>
 <td>3011</td>
 <td>接口不支持apikey请求方式</td>
+<td>Illegal subscribe event</td>
 </tr>
 <tr>
 <td>3012</td>
 <td>apikey无效</td>
-</tr>
-<tr>
-<td>3013</td>
-<td>该币种不是omni代币</td>
-</tr>
-<tr>
-<td>3014</td>
-<td>该币种没有propertyid</td>
-</tr>
-<tr>
-<td>3015</td>
-<td>程序内部错误</td>
+<td>Interface does not support apikey request method</td>
 </tr>
 <tr>
 <td>3016</td>
 <td>交易对错误</td>
+<td>Invalid apikey</td>
 </tr>
 <tr>
 <td>3017</td>
 <td>推送订阅event不合法</td>
-</tr>
-<tr>
-<td>3018</td>
-<td>查询可提现额度失败</td>
-</tr>
-<tr>
-<td>3019</td>
-<td>该币种未开启融资融币</td>
-</tr>
-<tr>
-<td>3020</td>
-<td>放款深度不足</td>
-</tr>
-<tr>
-<td>3021</td>
-<td>没有放款信息</td>
-</tr>
-<tr>
-<td>3022</td>
-<td>没有借款信息</td>
-</tr>
-<tr>
-<td>3023</td>
-<td>更新数据库失败</td>
+<td>Trading pair error</td>
 </tr>
 <tr>
 <td>3024</td>
 <td>apikey权限不足</td>
+<td>apikey authorization insufficient</td>
 </tr>
 <tr>
 <td>3025</td>
 <td>apikey签名验证失败</td>
+<td>apikey signature verification failed</td>
 </tr>
 <tr>
 <td>3026</td>
 <td>apikey ip受限制</td>
+<td>apikey ip is restricted</td>
 </tr>
 <tr>
 <td>3027</td>
 <td>账户没有apikey</td>
+<td>No apikey in your account</td>
 </tr>
 <tr>
 <td>3028</td>
 <td>账户apikey数量超过了限制数量</td>
+<td>Account apikey has exceeded the limit amount</td>
 </tr>
 <tr>
 <td>3029</td>
 <td>apikey允许ip数量超过了限制数量</td>
-</tr>
-<tr>
-<td>3030</td>
-<td>该Google验证码已经被使用过</td>
-</tr>
-<tr>
-<td>3031</td>
-<td>旧Google验证码已经被使用过</td>
-</tr>
-<tr>
-<td>3032</td>
-<td>没有可还的放贷单</td>
+<td>apikey ip has exceeded the limit amount</td>
 </tr>
 <tr>
 <td>3033</td>
-<td>查询类请求只能有一个cmd</td>
+<td>查询类请求限制一个cmd</td>
+<td>query allow only one cmd</td>
 </tr>
 <tr>
 <td>3034</td>
-<td>最多cmd数限制</td>
+<td>最大cmd个数限制</td>
+<td>maxinum cmds</td>
 </tr>
 <tr>
 <td>3035</td>
-<td>cmd个数限制</td>
+<td>cmd请求个数限制</td>
+<td>too many cmds</td>
 </tr>
 <tr>
-<td>3036</td>
-<td>提现数量不能少于最小提现数</td>
+<td>4000</td>
+<td>当前网络连接不稳定，请稍候重试</td>
+<td>the network is unstable now, please try again later</td>
 </tr>
 <tr>
-<td>3037</td>
-<td>账户资产异常</td>
-</tr>
-<tr>
-<td>3038</td>
-<td>qtum gethexaddress失败</td>
-</tr>
-<tr>
-<td>3039</td>
-<td>可锁仓量不足</td>
-</tr>
-<tr>
-<td>3040</td>
-<td>活动未开始</td>
-</tr>
-<tr>
-<td>3041</td>
-<td>暂不支持非压缩数据订阅</td>
-</tr>
-<tr>
-<td>3042</td>
-<td>最小数量限制</td>
-</tr>
-<tr>
-<td>3043</td>
-<td>不能包含特殊字符</td>
-</tr>
-<tr>
-<td>3044</td>
-<td>重复下单</td>
-</tr>
-<tr>
-<td>3045</td>
-<td>交易对订单数量限制</td>
-</tr>
-<tr>
-<td>3046</td>
-<td>交易对持仓数量限制</td>
-</tr>
-<tr>
-<td>3047</td>
-<td>invalid id, id must be string and length &gt; 10</td>
-</tr>
-<tr>
-<td>3048</td>
-<td>响应验签失败</td>
-</tr>
-<tr>
-<td>3049</td>
-<td>超出数量限制</td>
-</tr>
-<tr>
-<td>3050</td>
-<td>子账户名不能纯数字</td>
-</tr>
-<tr>
-<td>3051</td>
-<td>strategy order number reaches the limit of pair</td>
-</tr>
-<tr>
-<td>3052</td>
-<td>strategy order number reaches the limit of account</td>
-</tr>
-<tr>
-<td>3053</td>
-<td>子账户无法进行该操作</td>
-</tr>
-<tr>
-<td>3100</td>
-<td>不支持该币种</td>
-</tr>
-<tr>
-<td>3101</td>
-<td>不支持该交易对</td>
-</tr>
-<tr>
-<td>3102</td>
-<td>全仓不支持该操作</td>
-</tr>
-<tr>
-<td>3103</td>
-<td>没有持仓不支持该操作</td>
-</tr>
-<tr>
-<td>3104</td>
-<td>有持仓不支持该操作</td>
-</tr>
-<tr>
-<td>3105</td>
-<td>可减少保证金不足</td>
-</tr>
-<tr>
-<td>3106</td>
-<td>有挂单不支持该操作</td>
-</tr>
-<tr>
-<td>3107</td>
-<td>FOK撤单</td>
-</tr>
-<tr>
-<td>3108</td>
-<td>post only撤单</td>
-</tr>
-<tr>
-<td>3109</td>
-<td>爆仓触发撤单</td>
-</tr>
-<tr>
-<td>3110</td>
-<td>ADL触发撤单</td>
-</tr>
-<tr>
-<td>3111</td>
-<td>爆仓价变化导致平仓单撤单</td>
-</tr>
-<tr>
-<td>3112</td>
-<td>order side参数错误</td>
-</tr>
-<tr>
-<td>3113</td>
-<td>order type参数错误</td>
-</tr>
-<tr>
-<td>3114</td>
-<td>side参数错误</td>
-</tr>
-<tr>
-<td>3115</td>
-<td>margin保证金错误</td>
-</tr>
-<tr>
-<td>3116</td>
-<td>model参数错误</td>
-</tr>
-<tr>
-<td>3117</td>
-<td>leverage参数错误</td>
-</tr>
-<tr>
-<td>3118</td>
-<td>amount参数错误</td>
-</tr>
-<tr>
-<td>3119</td>
-<td>price参数错误</td>
-</tr>
-<tr>
-<td>3120</td>
-<td>client_oid重复</td>
-</tr>
-<tr>
-<td>3121</td>
-<td>self trade参数错误</td>
-</tr>
-<tr>
-<td>3122</td>
-<td>time in force参数错误</td>
-</tr>
-<tr>
-<td>3123</td>
-<td>visible quantity参数错误</td>
-</tr>
-<tr>
-<td>3124</td>
-<td>cancel after参数错误</td>
+<td>4003</td>
+<td>服务器繁忙，请稍后再试</td>
+<td>The server is busy, please try again later</td>
 </tr>
 </tbody></table>
 
@@ -8266,6 +8212,7 @@
         const btn_spot = document.getElementById('btn_spot');
         const btn_contract = document.getElementById('btn_contract');
         const btn_contract_coin = document.getElementById('btn_contract_coin')
+        const btn_v1 = document.getElementById('btn_v1')
 
         const url = GetUrlRelativePath();
 
@@ -8276,6 +8223,7 @@
           btn_spot.innerHTML = 'Spot';
           btn_contract_coin.innerHTML = 'ContractCoin';
           btn_contract.innerHTML = 'Contract USDT';
+          btn_v1.innerHTML = 'Use V1 API?';
 
           lang_btn.href = url.replace('en/', 'zh/');
           btn_spot.href = btn_spot.href.replace('zh/', 'en/');
@@ -8288,6 +8236,7 @@
           btn_spot.innerHTML = '现货';
           btn_contract_coin.innerHTML = '币本位永续合约';
           btn_contract.innerHTML = 'U本位永续合约';
+          btn_v1.innerHTML = '使用v1版本API';
 
           lang_btn.href = url.replace('zh/', 'en/');
           btn_spot.href = btn_spot.href.replace('en/', 'zh/');
