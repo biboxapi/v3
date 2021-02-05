@@ -327,6 +327,9 @@
             <a href="#u" class="toc-h1 toc-link" data-title="U本位合约">U本位合约</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#sdk" class="toc-h2 toc-link" data-title="SDK与代码示例">SDK与代码示例</a>
+                  </li>
+                  <li>
                     <a href="#1" class="toc-h2 toc-link" data-title="1.签名接口请求方式">1.签名接口请求方式</a>
                   </li>
                   <li>
@@ -384,7 +387,7 @@
                     <a href="#19" class="toc-h2 toc-link" data-title="19.查询订单">19.查询订单</a>
                   </li>
                   <li>
-                    <a href="#19-1" class="toc-h2 toc-link" data-title="19.1.查询划转记录">19.1.查询划转记录</a>
+                    <a href="#19-1" class="toc-h2 toc-link" data-title="19.1.查询账单">19.1.查询账单</a>
                   </li>
                   <li>
                     <a href="#19-2" class="toc-h2 toc-link" data-title="19.2.查询资产估值">19.2.查询资产估值</a>
@@ -458,7 +461,23 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='u'>U本位合约</h1><h2 id='1'>1.签名接口请求方式</h2>
+        <h1 id='u'>U本位合约</h1><h2 id='sdk'>SDK与代码示例</h2>
+<p>Bibox为开发人员提供了多种语言版本的合约SDK。
+这些SDK基于Bibox合约API开发，并自动完成以下功能：</p>
+
+<ul>
+<li>数据签名</li>
+<li>数据合成，例如：自动根据增量数据合成完整的深度</li>
+</ul>
+
+<p>因此，使用SDK开发访问Bibox的程序比使用API更便捷，开发周期更短。</p>
+
+<p>如果需要下载或者阅读更多信息，请点击以下链接:</p>
+
+<ul>
+<li><a href="https://github.com/Biboxcom/futures_usdt_java">Java</a></li>
+</ul>
+<h2 id='1'>1.签名接口请求方式</h2>
 <blockquote>
 <p>完整例子</p>
 </blockquote>
@@ -481,7 +500,7 @@
 <span class="kd">let</span> <span class="nx">secret</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c708ac3e70d115ec29efbee197330627d7edf842</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//你的 apikey 密码</span>
 <span class="kd">let</span> <span class="nx">sign</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">HmacMD5</span><span class="p">(</span><span class="nx">strToSign</span><span class="p">,</span> <span class="nx">secret</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span><span class="c1">//4.签名后的结果</span>
 
-<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3/assets/transfer/cbu</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3/cbuassets/transfer</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">({</span>
         <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span><span class="c1">//请求路径</span>
@@ -573,7 +592,7 @@
 <span class="kd">let</span> <span class="nx">secret</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c708ac3e70d115ec29efbee197330627d7edf842</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//你的 apikey 密码</span>
 <span class="kd">let</span> <span class="nx">sign</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">HmacMD5</span><span class="p">(</span><span class="nx">strToSign</span><span class="p">,</span> <span class="nx">secret</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span><span class="c1">//4.签名后的结果</span>
 
-<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3/assets/transfer/cbu</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3/cbuassets/transfer</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">({</span>
         <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span><span class="c1">//请求路径</span>
@@ -600,7 +619,7 @@
 <li>1.请求路径</li>
 </ul>
 
-<p>POST https://api.bibox.com/v3/assets/transfer/cbu</p>
+<p>POST https://api.bibox.com/v3/cbuassets/transfer</p>
 
 <ul>
 <li>2.请求参数</li>
@@ -3380,19 +3399,20 @@
 <td>忽略</td>
 </tr>
 </tbody></table>
-<h2 id='19-1'>19.1.查询划转记录</h2>
+<h2 id='19-1'>19.1.查询账单</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">CryptoJS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">crypto-js</span><span class="dl">"</span><span class="p">);</span>
 <span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">request</span><span class="dl">"</span><span class="p">);</span>
 
-<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3.1/cquery/base_u/transferLog</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3.1/cquery/base_u/bills</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">let</span> <span class="nx">apikey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">900625568558820892a8c833c33ebc8fd2701efe</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//your apikey</span>
 <span class="kd">let</span> <span class="nx">secret</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c708ac3e70d115ec29efbee197330627d7edf842</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//your apikey secret</span>
 
 <span class="kd">let</span> <span class="nx">param</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// pair: '4BTC_USDT',</span>
     <span class="na">coin_symbol</span><span class="p">:</span> <span class="dl">'</span><span class="s1">USDT</span><span class="dl">'</span><span class="p">,</span> 
     <span class="na">from</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span><span class="p">,</span>
     <span class="na">to</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span><span class="p">,</span> 
@@ -3486,6 +3506,22 @@
 <td></td>
 <td></td>
 </tr>
+<tr>
+<td>pair</td>
+<td>false</td>
+<td>string</td>
+<td>交易对</td>
+<td></td>
+<td>4BTC_USDT,4ETH_USDT,...</td>
+</tr>
+<tr>
+<td>bill_type</td>
+<td>false</td>
+<td>integer</td>
+<td>账单类型</td>
+<td></td>
+<td>1划转,2交易,3交易手续费,4资金费用,5资金费用调整,6降低风险等级减仓,7强平,8ADL系统减仓</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -3546,6 +3582,10 @@
 <td>交易对</td>
 </tr>
 <tr>
+<td>bill_type</td>
+<td>账单类型:1划转,2交易,3交易手续费,4资金费用,5资金费用调整,6降低风险等级减仓,7强平,8ADL系统减仓</td>
+</tr>
+<tr>
 <td>change_amount</td>
 <td>划转数量</td>
 </tr>
@@ -3565,7 +3605,7 @@
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">CryptoJS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">crypto-js</span><span class="dl">"</span><span class="p">);</span>
 <span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">request</span><span class="dl">"</span><span class="p">);</span>
 
-<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3.1/cquery/base_u/uassets</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.bibox.com/v3.1/cquery/base_u/bassets</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">let</span> <span class="nx">apikey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">900625568558820892a8c833c33ebc8fd2701efe</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//your apikey</span>
 <span class="kd">let</span> <span class="nx">secret</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c708ac3e70d115ec29efbee197330627d7edf842</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//your apikey secret</span>
@@ -3604,7 +3644,7 @@
 <li>1.请求路径</li>
 </ul>
 
-<p>POST https://api.bibox.com/v3.1/cquery/base_u/uassets</p>
+<p>POST https://api.bibox.com/v3.1/cquery/base_u/bassets</p>
 
 <blockquote>
 <p>Response</p>
